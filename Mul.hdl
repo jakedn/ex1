@@ -1,0 +1,46 @@
+CHIP Mul{
+    IN a[16], b[16];
+    OUT out[16];
+
+    PARTS:
+    Mux(a=false, b=a, sel=b[0], out=out1);
+    Shiftleft(in=a, out=ashift1);
+    Mux(a=false, b=a, sel=b[1], out=out2);
+    Shiftleft(in=ashift1, out=ashift2);
+    Mux(a=false, b=a, sel=b[2], out=out3);
+    Shiftleft(in=ashift2, out=ashift3);
+    Mux(a=false, b=a, sel=b[3], out=out4);
+    Shiftleft(in=ashift3, out=ashift4);
+    Mux(a=false, b=a, sel=b[4], out=out5);
+    Shiftleft(in=ashift4, out=ashift5);
+    Mux(a=false, b=a, sel=b[5], out=out6);
+    Shiftleft(in=ashift5, out=ashift6);
+    Mux(a=false, b=a, sel=b[6], out=out7);
+    Shiftleft(in=ashift6, out=ashift7);
+    Mux(a=false, b=a, sel=b[7], out=out8);
+    Shiftleft(in=ashift7, out=ashift8);
+    Mux(a=false, b=a, sel=b[8], out=out9);
+    Shiftleft(in=ashift8, out=ashift9);
+    Mux(a=false, b=a, sel=b[9], out=out10);
+    Shiftleft(in=ashift9, out=ashift10);
+    Mux(a=false, b=a, sel=b[10], out=out11);
+    Shiftleft(in=ashift10, out=ashift11);
+    Mux(a=false, b=a, sel=b[11], out=out12);
+    Shiftleft(in=ashift11, out=ashift12);
+    Mux(a=false, b=a, sel=b[12], out=out13);
+    Shiftleft(in=ashift12, out=ashift13);
+    Mux(a=false, b=a, sel=b[13], out=out14);
+    Shiftleft(in=ashift13, out=ashift14);
+    Mux(a=false, b=a, sel=b[14], out=out15);
+    Shiftleft(in=ashift14, out=ashift15);
+    Mux(a=false, b=a, sel=b[15], out=out16);
+
+    FullAdder(a=out1, b=out2, c=out3, out=outadd1);
+    FullAdder(a=outadd1, b=out4, c=out5, out=outadd2);
+    FullAdder(a=outadd2, b=out6, c=out7, out=outadd3);
+    FullAdder(a=outadd3, b=out8, c=out9, out=outadd4);
+    FullAdder(a=outadd4, b=out10, c=out11, out=outadd5);
+    FullAdder(a=outadd5, b=out12, c=out13, out=outadd6);
+    FullAdder(a=outadd6, b=out14, c=out15, out=outadd7);
+    Add16(a=outadd7, b=out16, out=out);
+}
